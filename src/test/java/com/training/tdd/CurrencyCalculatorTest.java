@@ -5,15 +5,26 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class CurrencyCalculatorTest {
+//    +calculation $5*2=$10
+//    +Make amount private
+//    +Dollar side-effects
+//    +5 CHF * 2 = 10 CHF
+//    +equals()
+//    $5 + 10 CHF = $10 (ratio is 2:1)
+//    Money rounding
+//    hashcode()
+//    Equal null
+//    Equal object
+//    Dollar/Franc duplication
+//    Common equals
+//    Common times
 
-    //+calculation $5*2=$10
-    //+Make amount private
-    //+Dollar side-effects
-    //Money rounding
-    //+equals()
-    //hashcode()
-    //Equal null
-    //Equal object
+    @Test
+    public void testFrancMultiplication() {
+        Franc five = new Franc(5);
+        assertEquals(new Franc(10), five.times(2));
+        assertEquals(new Franc(15), five.times(3));
+    }
 
     @Test
     public void testMultiplication() { // change 'testMultiplication()' method, to compare Dollar to Dollar, and encapsulate 'amount' field
@@ -30,7 +41,7 @@ public class CurrencyCalculatorTest {
     }
 
     @Test
-    public void testTimesMethodEquality(){
+    public void testTimesMethodEquality() {
         assertTrue(new Dollar(5).times(2).equals(new Dollar(5).times(2)));
         assertFalse(new Dollar(5).times(2).equals(new Dollar(5).times(3)));
     }
