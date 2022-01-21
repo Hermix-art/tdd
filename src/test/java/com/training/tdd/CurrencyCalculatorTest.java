@@ -16,7 +16,7 @@ public class CurrencyCalculatorTest {
 //    Equal null
 //    Equal object
 //    Dollar/Franc duplication
-//    Common equals
+//    +Common equals
 //    Common times
 
     @Test
@@ -37,13 +37,9 @@ public class CurrencyCalculatorTest {
     @Test
     public void testEquality() {
         assertTrue(new Dollar(5).equals(new Dollar(5)));
+        assertTrue(new Franc(5).equals(new Franc(5)));
         assertFalse(new Dollar(5).equals(new Dollar(6)));
-    }
-
-    @Test
-    public void testTimesMethodEquality() {
-        assertTrue(new Dollar(5).times(2).equals(new Dollar(5).times(2)));
-        assertFalse(new Dollar(5).times(2).equals(new Dollar(5).times(3)));
+        assertFalse(new Franc(5).equals(new Franc(6)));
     }
 
 }
