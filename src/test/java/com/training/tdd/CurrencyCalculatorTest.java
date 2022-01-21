@@ -7,22 +7,20 @@ import static org.testng.Assert.*;
 public class CurrencyCalculatorTest {
 
     //+calculation $5*2=$10
-    //Make amount private
+    //+Make amount private
     //+Dollar side-effects
     //Money rounding
-    //equals()
+    //+equals()
     //hashcode()
     //Equal null
     //Equal object
 
     @Test
-    public void testMultiplication() {
+    public void testMultiplication() { // change 'testMultiplication()' method, to compare Dollar to Dollar, and encapsulate 'amount' field
         Dollar five = new Dollar(5);
 
-        Dollar result = five.times(2);
-        assertEquals(10, result.amount);
-        result = five.times(3);
-        assertEquals(15, result.amount);
+        assertEquals(new Dollar(10), five.times(2));
+        assertEquals(new Dollar(15), five.times(3));
     }
 
     @Test
