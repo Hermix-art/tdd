@@ -10,36 +10,40 @@ public class CurrencyCalculatorTest {
 //    +Dollar side-effects
 //    +5 CHF * 2 = 10 CHF
 //    +equals()
+//    +Common equals
+//    +Compare Francs and Dollars
+//    +fDollar/Franc duplication
 //    $5 + 10 CHF = $10 (ratio is 2:1)
 //    Money rounding
 //    hashcode()
 //    Equal null
 //    Equal object
-//    Dollar/Franc duplication
-//    +Common equals
 //    Common times
 
     @Test
     public void testFrancMultiplication() {
-        Franc five = new Franc(5);
-        assertEquals(new Franc(10), five.times(2));
-        assertEquals(new Franc(15), five.times(3));
+        Money five = Money.franc(5);
+        assertEquals(Money.franc(10), five.times(2));
+        assertEquals(Money.franc(15), five.times(3));
     }
 
     @Test
-    public void testMultiplication() { // change 'testMultiplication()' method, to compare Dollar to Dollar, and encapsulate 'amount' field
-        Dollar five = new Dollar(5);
+    public void testMultiplication() {
+        Money five = Money.dollar(5);
 
-        assertEquals(new Dollar(10), five.times(2));
-        assertEquals(new Dollar(15), five.times(3));
+        assertEquals(Money.dollar(10), five.times(2));
+        assertEquals(Money.dollar(15), five.times(3));
     }
 
     @Test
     public void testEquality() {
-        assertTrue(new Dollar(5).equals(new Dollar(5)));
-        assertTrue(new Franc(5).equals(new Franc(5)));
-        assertFalse(new Dollar(5).equals(new Dollar(6)));
-        assertFalse(new Franc(5).equals(new Franc(6)));
+        assertTrue(Money.dollar(5).equals(Money.dollar(5)));
+        assertFalse(Money.dollar(5).equals(Money.dollar(6)));
+
+        assertTrue(Money.franc(5).equals(Money.franc(5)));
+        assertFalse(Money.franc(5).equals(Money.franc(6)));
+
+        assertFalse(Money.dollar(10).equals(Money.franc(10))); // 10 USD should not be equal to 10 francs
     }
 
 }

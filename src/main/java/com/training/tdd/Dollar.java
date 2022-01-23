@@ -1,19 +1,16 @@
 package com.training.tdd;
 
-import java.util.Objects;
 
-public class Dollar extends Money {
+public class Dollar extends Money {//making a factory method for dollar, avoiding the Dollar references,  using money only
+    // pulling times mehtod to parent, making it abstract, and leaving implementation in particular classes
+    //widening 'times()' method to parent return type,
 
     public Dollar(int amount) {
         this.amount = amount;
     }
 
-    public Dollar times(int multiplier) {
+    public Money times(int multiplier) {
         return new Dollar(amount * multiplier);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(amount);
-    }
 }
