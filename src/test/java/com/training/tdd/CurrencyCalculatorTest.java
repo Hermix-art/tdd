@@ -13,12 +13,19 @@ public class CurrencyCalculatorTest {
 //    +Common equals
 //    +Compare Francs and Dollars
 //    +fDollar/Franc duplication
+//    currency
 //    $5 + 10 CHF = $10 (ratio is 2:1)
 //    Money rounding
 //    hashcode()
 //    Equal null
 //    Equal object
 //    Common times
+
+    @Test
+    public void testCurrency() {
+        assertEquals("USD", Money.dollar(1).currency());
+        assertEquals("CHF", Money.franc(1).currency());
+    }
 
     @Test
     public void testFrancMultiplication() {
