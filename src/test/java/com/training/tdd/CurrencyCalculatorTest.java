@@ -14,7 +14,7 @@ public class CurrencyCalculatorTest {
 //    +Compare Francs and Dollars
 //    +fDollar/Franc duplication
 //    +currency
-//    Common times
+//    +Common times
 //    $5 + 10 CHF = $10 (ratio is 2:1)
 //    Money rounding
 //    hashcode()

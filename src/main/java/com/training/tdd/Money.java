@@ -24,7 +24,7 @@ public class Money {
     }
 
     Money times(int multiplier) {
-        return new Franc(amount * multiplier, currency);
+        return new Money(amount * multiplier, currency);
     }
 
 
@@ -46,6 +46,3 @@ public class Money {
         return amount + " " + currency;
     }
 }
-
-//equals will start compare ccys not classes
-//times to parent, not abstract
