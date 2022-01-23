@@ -2,7 +2,7 @@ package com.training.tdd;
 
 import java.util.Objects;
 
-public abstract class Money {
+public class Money {
     protected int amount;
     protected String currency;
 
@@ -23,20 +23,29 @@ public abstract class Money {
         return currency;
     }
 
-    abstract Money times(int amount);
+    Money times(int multiplier) {
+        return new Franc(amount * multiplier, currency);
+    }
 
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
+        if (o == null) return false;
         Money money = (Money) o;
-        return amount == money.amount;
+        return amount == money.amount && currency == money.currency;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(amount);
     }
+
+    @Override
+    public String toString() {
+        return amount + " " + currency;
+    }
 }
+
+//equals will start compare ccys not classes
+//times to parent, not abstract
