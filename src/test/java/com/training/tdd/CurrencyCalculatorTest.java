@@ -25,6 +25,14 @@ public class CurrencyCalculatorTest {
         assertEquals(Money.dollar(10), reduced);
     }
 
+    public void testPlusReturnsSum() {
+        Money five = Money.dollar(5);
+        Expression result = five.plus(five);
+        Sum sum = (Sum) result;
+        assertEquals(five, sum.augend); //first argument in addition
+        assertEquals(five, sum.addend); //second argument in addition
+    }
+
     @Test
     public void testCurrency() {
         assertEquals("USD", Money.dollar(1).currency());
