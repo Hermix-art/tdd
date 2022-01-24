@@ -19,10 +19,6 @@ public class Money implements Expression{
         return new Money(amount, "CHF");
     }
 
-    protected String currency() {
-        return currency;
-    }
-
     Money times(int multiplier) {
         return new Money(amount * multiplier, currency);
     }
@@ -48,5 +44,9 @@ public class Money implements Expression{
     @Override
     public String toString() {
         return amount + " " + currency;
+    }
+
+    protected String currency() {
+        return currency;
     }
 }

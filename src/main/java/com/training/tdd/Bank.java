@@ -2,8 +2,8 @@ package com.training.tdd;
 
 public class Bank {
     Money reduce(Expression source, String to) {
+        if(source instanceof Money) return (Money)source;
         Sum sum = (Sum) source;
-        int amount = sum.augend.amount + sum.addend.amount;
-        return Money.dollar(amount);
+        return sum.reduce(to);
     }
 }
