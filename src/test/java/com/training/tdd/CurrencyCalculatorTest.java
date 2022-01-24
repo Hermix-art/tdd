@@ -5,22 +5,19 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class CurrencyCalculatorTest {
-//    +calculation $5*2=$10
-//    +Make amount private
-//    +Dollar side-effects
-//    +5 CHF * 2 = 10 CHF
-//    +equals()
-//    +Common equals
-//    +Compare Francs and Dollars
-//    +fDollar/Franc duplication
-//    +currency
-//    +Common times
-//    +Delete testFrancMultiplication?
 //    $5 + 10 CHF = $10 (ratio is 2:1)
+//    $5 + $5 = $10
+
 //    Money rounding
 //    hashcode()
 //    Equal null
 //    Equal object
+
+    @Test
+    public void testSimpleAddition() {
+        Money sum = Money.dollar(5).plus(Money.dollar(5));
+        assertEquals(Money.dollar(10), sum);
+    }
 
     @Test
     public void testCurrency() {
