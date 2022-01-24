@@ -6,11 +6,11 @@ import static org.testng.Assert.*;
 
 public class CurrencyCalculatorTest {
 //    $5 + 10 CHF = $10 (ratio is 2:1)
-//    $5 + $5 = $10
-//    Return Money from $5 + $5
+//    +$5 + $5 = $10
+//    +Reduce(Bank, String)
 //    +Bank.reduce(Money)
-//    Reduce Money with conversion
-//    Reduce(Bank, String)
+//    +Reduce Money with conversion
+//    Return Money from $5 + $5
 
 //    Money rounding
 //    hashcode()
@@ -54,8 +54,13 @@ public class CurrencyCalculatorTest {
     @Test
     public void testReduceMoney() {
         Bank bank = new Bank();
-        Money result = bank.reduce(Money.dollar(1), "USD");
+        Money result = bank.reduce(Money.dollar(1), "USD"); //bank's hashtable has no rates
         assertEquals(Money.dollar(1), result);
+    }
+
+    @Test
+    public void testIdentityRate() {
+        assertEquals(1, new Bank().rate("USD", "USD"));
     }
 
 
