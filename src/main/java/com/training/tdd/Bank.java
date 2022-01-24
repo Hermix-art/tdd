@@ -1,15 +1,20 @@
 package com.training.tdd;
 
+import java.util.Hashtable;
+
 public class Bank {
+    private Hashtable rates = new Hashtable();
+
     Money reduce(Expression source, String to) {
         return source.reduce(this, to);
     }
 
-    public void addRate(String chf, String usd, int i) {
-
+    public void addRate(String from, String to, int rate) {
+        rates.put(new Pair(from, to), rate);
     }
 
     int rate(String from, String to) {
-        return (from.equals("CHF") && to.equals("USD")) ? 2 : 1;
+        Integer rate = (Integer) rates.get(new Pair(from, to));
+        return rate;
     }
 }
