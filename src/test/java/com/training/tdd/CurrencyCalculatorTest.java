@@ -8,7 +8,9 @@ public class CurrencyCalculatorTest {
 //    $5 + 10 CHF = $10 (ratio is 2:1)
 //    $5 + $5 = $10
 //    Return Money from $5 + $5
-//    Band.reduce(Money)
+//    +Bank.reduce(Money)
+//    Reduce Money with conversion
+//    Reduce(Bank, String)
 
 //    Money rounding
 //    hashcode()
@@ -16,10 +18,15 @@ public class CurrencyCalculatorTest {
 //    Equal object
 
     @Test
-    public void testSimpleAddition() {
-//        Money sum = Money.dollar(5).plus(Money.dollar(5));
-//        assertEquals(Money.dollar(10), sum);
+    public void testReduceMoneyDifferentCurrency() {
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        Money result = bank.reduce(Money.franc(2), "USD");
+        assertEquals(Money.dollar(1), result);
+    }
 
+    @Test
+    public void testSimpleAddition() {
         Money five = Money.dollar(5);
         Expression sum = five.plus(five);
         Bank bank = new Bank();
@@ -35,23 +42,21 @@ public class CurrencyCalculatorTest {
         assertEquals(five, sum.augend); //first argument in addition
         assertEquals(five, sum.addend); //second argument in addition
     }
+
     @Test
-    public void testReduceSum(){
+    public void testReduceSum() {
         Expression sum = new Sum(Money.dollar(3), Money.dollar(4));
         Bank bank = new Bank();
         Money result = bank.reduce(sum, "USD");
-        System.out.println(result.amount);
         assertEquals(Money.dollar(7), result);
     }
 
     @Test
-    public void testReduceMoney(){
+    public void testReduceMoney() {
         Bank bank = new Bank();
         Money result = bank.reduce(Money.dollar(1), "USD");
         assertEquals(Money.dollar(1), result);
     }
-
-
 
 
     @Test
