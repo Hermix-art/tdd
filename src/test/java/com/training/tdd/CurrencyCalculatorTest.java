@@ -5,19 +5,12 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class CurrencyCalculatorTest {
-//    $5 + 10 CHF = $10 (ratio is 2:1)
-//    +$5 + $5 = $10
-//    +Reduce(Bank, String)
-//    +Bank.reduce(Money)
-//    +Reduce Money with conversion
-//    Return Money from $5 + $5
-//    +Sum.plus
 
-//    Expression.times
-//    Money rounding
-//    hashcode()
-//    Equal null
-//    Equal object
+    @Test
+    public void testPlusSameCurrencyReturnsMoney() {
+        Expression sum = Money.dollar(1).plus(Money.dollar(1));
+        assertEquals(Money.dollar(2), sum.reduce(new Bank(), "USD"));
+    }
 
     @Test
     public void testSumTimes() {
